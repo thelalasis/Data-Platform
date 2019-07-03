@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'blog',
     'taggit',
     'employees.apps.EmployeesConfig',
+    'terms',
+    'reac',
 ]
 
 MIDDLEWARE = [

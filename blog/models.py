@@ -54,23 +54,10 @@ class comment(models.Model):
     post = models.ForeignKey(article, on_delete = models.CASCADE, related_name = 'comment')
     name = models.CharField(max_length = 100)
     body = models.TextField()
-    created = models.DateTimeField(auto_now_add = True)
+    created = models.DateTimeField('创建时间', auto_now_add = True)
 
     class Meta:
         ordering = ['created']
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name,self.post)
-
-
-#术语定义部分内容
-class terms(models.Model):
-    id = models.AutoField(primary_key = True)
-    title = models.CharField("概词条念", max_length = 200)
-    content = models.TextField("词条说明")
-    acmodels = models.ForeignKey(acmodels, on_delete = models.CASCADE, limit_choices_to={'if_intra_ac': True})
-    tags = TaggableManager("标签",blank=True)
-    source = models.TextField("词条来源",blank=True)
-
-    def __str__(self):
-        return (self.title)

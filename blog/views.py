@@ -12,7 +12,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from blog.models import article
 from blog.models import accident
 from blog.models import comment
-from blog.models import terms
+
+from terms.models import terms
+from reac.models import fm
+
 
 # from blog.forms import commentForm
 
@@ -93,3 +96,8 @@ class get_terms_detail(LoginRequiredMixin,DetailView):
 	model = terms
 	context_object_name = "term"
 	pk_url_kwarg = 'terms_id'
+
+class get_fm_list(LoginRequiredMixin,ListView):
+	model = fm
+	template_name = "fm_list.html"
+	content_object_name =  "fm_list"
